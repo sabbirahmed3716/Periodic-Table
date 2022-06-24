@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title>Periodic Table - Sabbir</title>
+<link rel="stylesheet" href="fontawesome/css/all.css">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    transition: 0.3s;
+}
+p {
+   
+   font-weight: 400;
+   font-size: 14px;
+}
+#table {
+width: calc(75px*19);
+position:relative;
+margin: 100px;
+padding:100px;
+}
+.element {
+height: 75px;
+width: 75px;
+border:1px solid rgba(0,0,0,0.2);
+background: var(--bg);
+padding: 5px;
+display: flex;
+flex-direction: column;
+word-wrap: break-word;
+position:absolute;
+top: calc(87px*var(--period));
+left: calc(87px*var(--group));
+}
+.element:hover {
+background: #ddd;
+}
+.element .num {
+display: flex;
+font-size: 12px;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 5px;
+font-weight: 700;
+}
+.element .num .atomnum {
+font-size: 18px;
+}
+.gp {
+height: 75px;
+width: 75px;
+line-height: 75px;
+position:absolute;
+text-align:center;
+top: var(--t);
+left: var(--l);
+font-weight: bolder;
+font-size: 18px;
+}
+.per, .grp {
+position:absolute;
+font-weight: bolder;
+font-size: 22px;
+display: flex;
+justify-content: center;
+align-items: center;
+letter-spacing: 5px;
+}
+.per {
+top: calc(87px*4);
+left: -140px;
+hight: calc(87px*8);
+transform: rotate(-90deg);
+}
+.grp {
+top: 180px;
+left: 609px;
+}
+.lc {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.rel {
+height: 100%;
+width: 100%;
+position: relative;
+}
+.info {
+position:absolute;
+bottom:-5px;
+right: -5px;
+height: 20px;
+width: 20px;
+text-align:center;
+line-height: 20px;
+background: rgba(0, 175, 255, 0.3);
+color: #111;
+border-radius: 50%;
+font-size: 10px;
+}
+.popup {
+max-height: 330px;
+width: 80vw;
+min-width: 220px;
+max-width: 420px;
+position:absolute;
+top: 0;
+left: 50vw;
+transform:translateX(-50%);
+border: 2px solid rgba(0,0,0,0.3);
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+padding: 20px 12px;
+z-index: 10101001020292929;
+background: rgba(0,0,0,0.8);
+color: #fff;
+overflow:scroll;
+display: none;
+backdrop-filter: blur(1px);
+}
+#err {
+width: 140px;
+}
+table {
+border-collapse:collapse;
+}
+td {
+padding: 10px;
+}
+tr:nth-child(even){
+background: rgba(255,255,255,0.07);
+}
+.popup a{
+text-decoration:none;
+color: #fff;
+padding: 9px 12px;
+background: rgba(255,255,255,0.3);
+margin: 0 auto;
+display: block;
+border-radius: 50px;
+text-align:center;
+}
+
+.popup a:hover{
+background: rgba(255,255,255,0.5);
+}
+.close {
+display: block;
+text-align:right;
+color: #ff1103;
+font-size: 22px;
+}
+.symbol {
+color: #ffc;
+font-size: 26px;
+display: blok;
+padding-bottom: 15px;
+}
+
+.introduce {
+position:absolute;
+top: calc(87px*11);
+left: calc(87px*3);
+}
+
+.introduce .category {
+float: left;
+height: 75px;
+width: calc(800px/9);
+padding: 10px;
+box-sizing:border-box;
+background: var(--catColor);
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: 20px;
+text-align: center;
+box-shadow: 0 0 5px 2px var(--catColor);
+color: #232;
+border-radius: 5px;
+}
+
+.copyright {
+position: fixed;
+right: 50px;
+bottom: 50px;
+color: #fff;
+padding: 25px;
+background: rgba(0,0,0,1);
+border-radius: 10px;
+font-size: 2em;
+}
+</style>
+
+</head>
+<body>
+<div id="table">
+<div class="popup">
+<i onclick="document.querySelector('.popup').style.display='none';" class="fas fa-times close" ></i>
+<table>
+<tr><th colspan="3" class="symbol" >He</th></th>
+<tr><td>Name</td><td>:</td><td><span id="name">Helium</span></td></tr>
+<tr><td>Periodic Number</td><td>:</td><td><span id="number">2</span></td></tr>
+<tr><td>Periodic Mass</td><td>:</td><td> <span id="mass">4</span></td></tr>
+<tr><td>Electron Cofiguration</td><td>:</td><td><span id="config">1s2</span></td></tr>
+<tr><td>Group</td><td>:</td><td><span id="group">18</span></td></tr>
+<tr><td>Period</td><td>:</td><td><span id="period">1</span></td></tr>
+</table>
+<a href="#" onclick="alert('This feature will available soon - Mohammad Sabbir')">More Details</a>
+</div>
+<p class="per">&larr;Period&rarr;</p>
+<p class="grp">&larr;Group&rarr;</p>
+<div class="element" style="--bg: #ED9CC3;--period: 5; --group: 2;">
+	<div class="rel lc" >
+	<h3>57-71</h3>
+	<i class="fas fa-info info"></i>
+	</div>
+</div>
+<div class="element" style="--bg: #E2A9CD;--period: 6; --group: 2;">
+	<div class="rel lc">
+	<h3>89-103</h3>
+	<i class="fas fa-info info"></i>
+	</div>
+</div>
+<div class="introduce">
+<div style="position: relative;" >
+<div class="category" style="--catColor: #F8A88E" >Alkali Metal</div>
+<div class="category" style="--catColor: #FED293" >Alkaline Earth</div>
+<div class="category" style="--catColor: #F6F396" >Transition Metal</div>
+<div class="category" style="--catColor: #A8D698" >Basic Metal</div>
+<div class="category" style="--catColor: #A8DFE8" >Metalloid</div>
+<div class="category" style="--catColor: #9FACD7" >Nonmetal</div>
+<div class="category" style="--catColor: #AE9ACA" >Halogen</div>
+<div class="category" style="--catColor: #CFA3CC" >Noble Gas</div>
+<div class="category" style="--catColor: #EE9FC5" >Lanthanide</div>
+<div class="category" style="--catColor: #E3ABCE" >Actinide</div>
+</div>
+</div>
+</div>
+<p class="copyright">&copy;Mohammad Sabbir</p>
+<script type="text/javascript">
+// DECLARED VARIABLES
+var elements=[];
+const table = document.querySelector('#table');
+const eln = document.querySelector('#name');
+
+// CREATE PERIOD
+for(let i=0;i<8;i++){
+		table.innerHTML += `<p class="gp" style="--l: -55px; --t: ${i*87}px;">${i+1}</p>`;
+}
+
+// CREATE GROUP
+for(let i=0;i<18;i++){
+	let left = '-55';
+	
+	if(i==0 || i==17){left = '-55'}
+	else if(i==1 || (i>=12 && i<=16)) {left = 87-55}
+	else if(i>=2 && i<=11) {left = (87*3)-55}
+
+	table.innerHTML += `<p class="gp" style="--l: ${i*87}px; --t: ${left}px;">${i+1}</p>`;
+}
+
+// FETCH ELEMENTS AND SHOW
+fetch('data.json')
+.then((res)=>res.json())
+.then((table_data)=> {
+	elements = table_data.elements
+
+elements.forEach(element=>{
+	let colour;
+	let cat = element.category.toLowerCase();
+
+	if(cat.match(/alkali metal/)){colour='#F8A88E'}
+	else if(cat.match(/post-transition metal/)){colour='#A9D69A';}
+	else if(cat.match(/transition metal/)){colour='#F7F39B'}
+	else if(element.xpos == 17){colour='#AE9ACA'}
+	else if(cat.match(/alkaline earth/)){colour='#FED190'}
+	else if(cat.match(/metalloid/)){colour='#A8DFE8'}
+	else if(cat.match(/halogen/)){colour='#B19ECC';}
+	else if(cat.match(/noble gas/)){colour='#CFA3CC';}
+	else if(cat.match(/nonmetal/)){colour='#9DA9D6';}
+	else if(cat.match(/lanthanide/)){colour='#ED9CC3';}
+	else if(cat.match(/actinide/)){colour='#E2A9CD';}
+
+// DISPLAY ELEMENTS IN TABLE
+	table.innerHTML += `<div onclick="showInfo(this, ${element.number})" class="element" style="--bg: ${colour};--period: ${element.ypos-1}; --group: ${element.xpos-1};">
+		<div class="rel"><div class="num"><span class="atomnum">${element.number}</span><span>${Math.round(element.atomic_mass)}</span></div>
+		<div><h3>${element.symbol}</h3></div>
+		<p>${element.name}</p>
+		<i class="fas fa-info info"></i>
+		</div></div>`;
+})})
+
+function showInfo(tar, anum){
+let tarel = elements.find((element)=>{
+return element.number == anum;
+})
+document.querySelector('.popup').style.display='initial'
+document.querySelector('#name').innerHTML = tarel.name;
+document.querySelector('.symbol').innerHTML = tarel.symbol;
+document.querySelector('#mass').innerHTML = tarel.atomic_mass;
+document.querySelector('#number').innerHTML = tarel.number;
+document.querySelector('#config').innerHTML = tarel.electron_configuration;
+if(tarel.category == 'lanthanide' || tarel.category == 'actinide') {
+document.querySelector('#group').innerHTML = '3';
+}
+else {
+document.querySelector('#group').innerHTML = tarel.xpos;
+}
+document.querySelector('#period').innerHTML = tarel.period;
+document.querySelector('.popup').style.top = (tar.offsetTop+87)+'px';
+if(tar.offsetLeft+(87/2) < 60){
+document.querySelector('.popup').style.left = (tar.offsetLeft+(87/2)+60)+'px';
+} else if(tar.offsetLeft+(87/2) > 1420) {
+document.querySelector('.popup').style.left = (tar.offsetLeft+(87/2)-60)+'px';
+} else {
+document.querySelector('.popup').style.left = (tar.offsetLeft+(87/2))+'px';
+}
+}
+</script>
+</body>
+</html>
